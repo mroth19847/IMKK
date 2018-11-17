@@ -3,6 +3,9 @@ package GUI;
 import BL.CellRenderer;
 import BL.IMKKBL;
 import BL.Player;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class IMKKGUI extends javax.swing.JFrame {
@@ -158,11 +161,19 @@ public class IMKKGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveFileActionPerformed
-        // TODO add your handling code here:
+        try {
+            bl.save(new File("./players.ser"));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "An error accured while trying to save the current game!");
+        }
     }//GEN-LAST:event_saveFileActionPerformed
 
     private void loadFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFileActionPerformed
-        // TODO add your handling code here:
+        try {
+            bl.load(new File("./players.ser"));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "An error accured while trying to loads the current game!");
+        }
     }//GEN-LAST:event_loadFileActionPerformed
 
     private void addPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlayerActionPerformed

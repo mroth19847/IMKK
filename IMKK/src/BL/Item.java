@@ -1,6 +1,8 @@
 package BL;
 
-public abstract class Item {
+import java.io.Serializable;
+
+public abstract class Item implements Serializable{
     
     protected int deltaAttack;
     protected int deltaDefense;
