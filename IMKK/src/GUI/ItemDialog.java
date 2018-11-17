@@ -2,6 +2,7 @@ package GUI;
 
 import BL.Axe;
 import BL.Item;
+import BL.MagicStaff;
 import BL.Player;
 import BL.Shield;
 import BL.Sword;
@@ -25,6 +26,7 @@ public class ItemDialog extends javax.swing.JDialog {
             cbItem.addItem(new Sword());
             cbItem.addItem(new Axe());
             cbItem.addItem(new Shield());
+            cbItem.addItem(new MagicStaff());
         }
     }
 

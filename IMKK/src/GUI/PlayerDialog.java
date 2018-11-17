@@ -1,6 +1,7 @@
 package GUI;
 
 import BL.Knight;
+import BL.Mage;
 import BL.Orc;
 import BL.Player;
 import javax.swing.JOptionPane;
@@ -46,7 +47,7 @@ public class PlayerDialog extends javax.swing.JDialog {
 
         jLabel2.setText("Species:");
 
-        cbSpecies.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Human", "Orc" }));
+        cbSpecies.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Human", "Orc", "Mage" }));
 
         btok.setText("Ok");
         btok.addActionListener(new java.awt.event.ActionListener() {
@@ -113,8 +114,10 @@ public class PlayerDialog extends javax.swing.JDialog {
             if (!change) {
                 if (cbSpecies.getSelectedItem().equals("Human")) {
                     pl = new Knight(tfName.getText());
-                } else {
+                } else if (cbSpecies.getSelectedItem().equals("Orc")){
                     pl = new Orc(tfName.getText());
+                } else {
+                    pl = new Mage(tfName.getText());
                 }
             } else {
                 pl.setName(tfName.getText());
