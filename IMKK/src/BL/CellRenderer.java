@@ -7,6 +7,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.TableCellRenderer;
 
 public class CellRenderer implements TableCellRenderer {
@@ -18,6 +19,7 @@ public class CellRenderer implements TableCellRenderer {
         label.setFont(new Font("Carstellar", Font.BOLD, 24));
         Player pl = (Player) value;
         label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        label.setHorizontalAlignment(SwingConstants.CENTER);
         if (isSelected) {
             label.setBackground(Color.blue);
             label.setForeground(Color.white);
@@ -42,7 +44,7 @@ public class CellRenderer implements TableCellRenderer {
             case 4:
                 if (pl.dead) {
                     label.setBackground(Color.red);
-                    label.setBackground(Color.black);
+                    label.setForeground(Color.black);
                     label.setText("DEAD");
                 } else {
                     label.setText(pl.getHp() + "");

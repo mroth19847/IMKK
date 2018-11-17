@@ -41,6 +41,7 @@ public class IMKKGUI extends javax.swing.JFrame {
         deleteItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("IMKK");
         setResizable(false);
 
         playerTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -204,14 +205,24 @@ public class IMKKGUI extends javax.swing.JFrame {
     private void addItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItemActionPerformed
         int sel = playerTable.getSelectedRow();
         if (sel > -1) {
-            ItemDialog dlg = new ItemDialog(this, true, false, getPlayerAtIndex(sel));
-            dlg.setVisible(true);
+            if (getPlayerAtIndex(sel).getItemCount() >= 2) {
+                JOptionPane.showMessageDialog(null, "A player can't carry more than two items!");
+            } else {
+                ItemDialog dlg = new ItemDialog(this, true, false, getPlayerAtIndex(sel));
+                dlg.setVisible(true);
+            }
         }
     }//GEN-LAST:event_addItemActionPerformed
 
     private void deleteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteItemActionPerformed
         int sel = playerTable.getSelectedRow();
         if (sel > -1) {
+            if (getPlayerAtIndex(sel).getItemCount() <= 0) {
+                JOptionPane.showMessageDialog(null, "This player doesn't have any items!");
+            } else {
+                ItemDialog dlg = new ItemDialog(this, true, false, getPlayerAtIndex(sel));
+                dlg.setVisible(true);
+            }
             ItemDialog dlg = new ItemDialog(this, true, true, getPlayerAtIndex(sel));
             dlg.setVisible(true);
         }

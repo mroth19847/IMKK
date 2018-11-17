@@ -50,6 +50,10 @@ public abstract class Player implements Serializable {
             }
         }
     }
+    
+    public int getItemCount(){
+        return items.size();
+    }
 
     public void addItem(Item i) {
         attack += i.getDeltaAttack();
