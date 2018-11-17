@@ -4,8 +4,6 @@ import BL.CellRenderer;
 import BL.IMKKBL;
 import BL.Player;
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class IMKKGUI extends javax.swing.JFrame {
@@ -173,7 +171,7 @@ public class IMKKGUI extends javax.swing.JFrame {
             bl.load(new File("./players.ser"));
             bl.update();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "An error accured while trying to loads the current game!");
+            JOptionPane.showMessageDialog(null, "An error accured while trying to load the game!");
         }
     }//GEN-LAST:event_loadFileActionPerformed
 
@@ -221,12 +219,16 @@ public class IMKKGUI extends javax.swing.JFrame {
 
     private void btFightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFightActionPerformed
         int[] sel = playerTable.getSelectedRows();
-        if (sel.length != 2){
+        if (sel.length != 2) {
             JOptionPane.showMessageDialog(null, "For fighting two players have to be selected!");
         } else {
-            Player winner = getPlayerAtIndex(sel[0]).fight(getPlayerAtIndex(sel[1]));
-            JOptionPane.showMessageDialog(null, "The Fight is over!\n"+winner.getName()+" won!");
-            bl.update();
+            try {
+                Player winner = getPlayerAtIndex(sel[0]).fight(getPlayerAtIndex(sel[1]));
+                JOptionPane.showMessageDialog(null, "The Fight is over!\n" + winner.getName() + " won!");
+                bl.update();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
         }
     }//GEN-LAST:event_btFightActionPerformed
 

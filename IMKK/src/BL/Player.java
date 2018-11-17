@@ -12,6 +12,7 @@ public abstract class Player implements Serializable {
     protected int hp;
     protected String name;
     protected ArrayList<Item> items = new ArrayList<>();
+    protected boolean dead;
 
     public Player(int attack, int defense, int hp, String name) {
         this.attack = attack;
@@ -27,7 +28,8 @@ public abstract class Player implements Serializable {
     d1 = 25
     d2 = 5
      */
-    public Player fight(Player enemy) {
+    public Player fight(Player enemy) throws Exception{
+        if(this.dead || enemy.dead) throw new Exception("Dead players are not allowed to fight!");
         int en = enemy.getAttack() - defense;
         int me = attack - enemy.getDefense();
         if (me > en) {
@@ -63,6 +65,7 @@ public abstract class Player implements Serializable {
 
     public void die() {
         hp--;
+        if(hp == 0) dead = true;
     }
 
     public void removeItem(Item i) {
