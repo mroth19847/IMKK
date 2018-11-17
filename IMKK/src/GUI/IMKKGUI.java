@@ -171,6 +171,7 @@ public class IMKKGUI extends javax.swing.JFrame {
     private void loadFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFileActionPerformed
         try {
             bl.load(new File("./players.ser"));
+            bl.update();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "An error accured while trying to loads the current game!");
         }
@@ -189,6 +190,7 @@ public class IMKKGUI extends javax.swing.JFrame {
         int sel = playerTable.getSelectedRow();
         if (sel > -1) {
             bl.remove(sel);
+            bl.update();
         }
     }//GEN-LAST:event_deletePlayerActionPerformed
 

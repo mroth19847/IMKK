@@ -1,10 +1,11 @@
 package BL;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Player {
+public abstract class Player implements Serializable {
 
     protected int attack;
     protected int defense;
