@@ -1,3 +1,5 @@
+package BL;
+
 public abstract class Item {
     
     protected int deltaAttack;
@@ -15,6 +17,13 @@ public abstract class Item {
     public int getDeltaDefense() {
         return deltaDefense;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName();
+    }
+    
+    
 
     
     

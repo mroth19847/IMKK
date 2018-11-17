@@ -1,3 +1,5 @@
+package BL;
+
 public class Shield extends Item{
 
     public Shield() {

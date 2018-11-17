@@ -1,3 +1,5 @@
+package BL;
+
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -24,20 +26,24 @@ public abstract class Player {
     d1 = 25
     d2 = 5
      */
-    public void fight(Player enemy) {
-        int d1 = enemy.getAttack() - defense;
-        int d2 = attack - enemy.getDefense();
-        if (d1 > d2) {
+    public Player fight(Player enemy) {
+        int en = enemy.getAttack() - defense;
+        int me = attack - enemy.getDefense();
+        if (me > en) {
             enemy.die();
-        } else if (d1 < d2) {
+            return this;
+        } else if (me < en) {
             this.die();
+            return enemy;
         } else {
             Random rdm = new Random();
             int r = rdm.nextInt(2);
             if (r == 1) {
                 enemy.die();
+                return this;
             } else {
                 this.die();
+                return enemy;
             }
         }
     }
@@ -45,7 +51,7 @@ public abstract class Player {
     public void addItem(Item i) {
         attack += i.getDeltaAttack();
         defense += i.getDeltaDefense();
-        if (i instanceof Sword && this instanceof Human) {
+        if (i instanceof Sword && this instanceof Knight) {
             attack += 5;
             defense += 5;
         } else if (i instanceof Axe && this instanceof Orc) {

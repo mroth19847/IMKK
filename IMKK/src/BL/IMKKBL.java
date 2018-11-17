@@ -1,3 +1,5 @@
+package BL;
+
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
@@ -5,16 +7,14 @@ import javax.swing.table.AbstractTableModel;
 public class IMKKBL extends AbstractTableModel{
 
     private ArrayList<Player> players = new ArrayList<>();
-    private String[] colNames = {"Type", "Name", "Attack", "Defense", "HP", "Items"};
+    private String[] colNames = {"Species", "Name", "Attack", "Defense", "HP", "Items"};
     
     public void add(Player p){
         players.add(p);
-        update();
     }
     
     public void remove(int idx){
         players.remove(idx);
-        update();
     }
 
     @Override

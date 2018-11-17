@@ -1,6 +1,8 @@
+package BL;
+
 public class Axe extends Item{
 
-    public Axe(int deltaAttack, int deltaDefense) {
+    public Axe() {
         super(20, -10);
     }
     

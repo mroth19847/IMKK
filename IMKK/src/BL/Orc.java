@@ -1,3 +1,5 @@
+package BL;
+
 public class Orc extends Player{
     
     public Orc(String name) {

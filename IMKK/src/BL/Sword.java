@@ -1,6 +1,8 @@
+package BL;
+
 public class Sword extends Item{
 
-    public Sword(int deltaAttack, int deltaDefense) {
+    public Sword() {
         super(10, 0);
     }
  
