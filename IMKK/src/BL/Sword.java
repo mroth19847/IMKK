@@ -3,7 +3,7 @@ package BL;
 public class Sword extends Item{
 
     public Sword() {
-        super(10, 0);
+        super(30, 0, "Knight", 15, 15);
     }
  
 }

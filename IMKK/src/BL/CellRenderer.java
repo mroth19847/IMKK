@@ -28,8 +28,10 @@ public class CellRenderer implements TableCellRenderer {
             case 0:
                 if (pl instanceof Knight) {
                     label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Knight.png")));
-                } else {
+                } else if (pl instanceof Orc) {
                     label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Orc.png")));
+                } else {
+                    label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Mage.png")));
                 }
                 break;
             case 1:

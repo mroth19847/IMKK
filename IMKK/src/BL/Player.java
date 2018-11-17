@@ -1,6 +1,5 @@
 package BL;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,15 +20,10 @@ public abstract class Player implements Serializable {
         this.name = name;
     }
 
-    /*
-    P1 150 / 120
-    P2 125 / 130
-    
-    d1 = 25
-    d2 = 5
-     */
-    public Player fight(Player enemy) throws Exception{
-        if(this.dead || enemy.dead) throw new Exception("Dead players are not allowed to fight!");
+    public Player fight(Player enemy) throws Exception {
+        if (this.dead || enemy.dead) {
+            throw new Exception("Dead players are not allowed to fight!");
+        }
         int en = enemy.getAttack() - defense;
         int me = attack - enemy.getDefense();
         if (me > en) {
@@ -50,31 +44,35 @@ public abstract class Player implements Serializable {
             }
         }
     }
-    
-    public int getItemCount(){
+
+    public int getItemCount() {
         return items.size();
     }
 
     public void addItem(Item i) {
         attack += i.getDeltaAttack();
         defense += i.getDeltaDefense();
-        if (i instanceof Sword && this instanceof Knight) {
-            attack += 5;
-            defense += 5;
-        } else if (i instanceof Axe && this instanceof Orc) {
-            attack += 10;
+        if (this.getClass().getSimpleName().equals(i.getAdvantagedSpecies())) {
+            attack += i.getAdvantageAttack();
+            defense += i.getAdvantageDefense();
         }
         items.add(i);
     }
 
     public void die() {
         hp--;
-        if(hp == 0) dead = true;
+        if (hp == 0) {
+            dead = true;
+        }
     }
 
     public void removeItem(Item i) {
         attack -= i.getDeltaAttack();
         defense -= i.getDeltaDefense();
+        if (this.getClass().getSimpleName().equals(i.getAdvantagedSpecies())) {
+            attack -= i.getAdvantageAttack();
+            defense -= i.getAdvantageDefense();
+        }
         items.remove(i);
     }
 
