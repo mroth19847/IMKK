@@ -33,12 +33,12 @@ public abstract class Player implements Serializable {
         if (me > en) {
             this.addXP(25);
             enemy.addXP(15);
-            enemy.die();
+            enemy.die(me-en);
             return this;
         } else if (me < en) {
             this.addXP(15);
             enemy.addXP(25);
-            this.die();
+            this.die(en-me);
             return enemy;
         } else {
             Random rdm = new Random();
@@ -46,12 +46,12 @@ public abstract class Player implements Serializable {
             if (r == 1) {
                 this.addXP(25);
                 enemy.addXP(15);
-                enemy.die();
+                enemy.die(1);
                 return this;
             } else {
                 this.addXP(15);
                 enemy.addXP(25);
-                this.die();
+                this.die(1);
                 return enemy;
             }
         }
@@ -71,9 +71,13 @@ public abstract class Player implements Serializable {
         items.add(i);
     }
 
-    public void die() {
-        hp--;
-        if (hp == 0) {
+    public void die(int diff) {
+        if(diff >= 100) hp -= 5;
+        else if(diff >= 75) hp -= 4;
+        else if(diff >= 50) hp -= 3;
+        else if(diff >= 25) hp -= 2;
+        else hp -= 1;
+        if (hp <= 0) {
             dead = true;
         }
     }
