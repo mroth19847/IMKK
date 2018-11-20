@@ -68,7 +68,10 @@ public class CellRenderer implements TableCellRenderer {
                 }
                 list.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
                 return list;
+            case 6:
+                label.setText(pl.getLevel()+"");
         }
+        if(IMKKBL.showXP && column == 7) label.setText(pl.getXp()+""); 
         return label;
     }
 

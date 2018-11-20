@@ -39,6 +39,8 @@ public class IMKKGUI extends javax.swing.JFrame {
         itemMenu = new javax.swing.JMenu();
         addItem = new javax.swing.JMenuItem();
         deleteItem = new javax.swing.JMenuItem();
+        xpMenu = new javax.swing.JMenu();
+        showXP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IMKK");
@@ -132,6 +134,18 @@ public class IMKKGUI extends javax.swing.JFrame {
         itemMenu.add(deleteItem);
 
         Menu.add(itemMenu);
+
+        xpMenu.setText("XP");
+
+        showXP.setText("Show / Decline XP");
+        showXP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showXPActionPerformed(evt);
+            }
+        });
+        xpMenu.add(showXP);
+
+        Menu.add(xpMenu);
 
         setJMenuBar(Menu);
 
@@ -243,6 +257,10 @@ public class IMKKGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btFightActionPerformed
 
+    private void showXPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showXPActionPerformed
+        bl.triggerXPcol();
+    }//GEN-LAST:event_showXPActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -290,6 +308,8 @@ public class IMKKGUI extends javax.swing.JFrame {
     private javax.swing.JMenu playerMenu;
     private javax.swing.JTable playerTable;
     private javax.swing.JMenuItem saveFile;
+    private javax.swing.JMenuItem showXP;
+    private javax.swing.JMenu xpMenu;
     // End of variables declaration//GEN-END:variables
 
 }

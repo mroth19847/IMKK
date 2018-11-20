@@ -15,7 +15,7 @@ public class IMKKBL extends AbstractTableModel{
     private ArrayList<Player> players = new ArrayList<>();
     private String[] colNames = {"Species", "Name", "Attack", "Defense", "HP", "Items", "Level"};
     private String[] xpcolNames = {"Species", "Name", "Attack", "Defense", "HP", "Items", "Level", "XP"};
-    private boolean showXP;
+    public static boolean showXP;
     
     public void triggerXPcol(){
         showXP = !showXP;
