@@ -99,7 +99,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="sortMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sorting"/>
+            <Property name="text" type="java.lang.String" value="Sort"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="sortByHp">
@@ -125,6 +125,53 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sortByStrenghActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="filterMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Filter"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="filterAlive">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Show Alive"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filterAliveActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="filterKnight">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Show Knights"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filterKnightActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="filterOrc">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Show Orcs"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filterOrcActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="filterMage">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Show Mages"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filterMageActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="resetFilter">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reset Filter"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetFilterActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

@@ -13,22 +13,55 @@ import javax.swing.table.AbstractTableModel;
 public class IMKKBL extends AbstractTableModel {
 
     private ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Player> filtered = new ArrayList<>();
     private String[] colNames = {"Species", "Name", "Attack", "Defense", "HP", "Items", "Level"};
     private String[] xpcolNames = {"Species", "Name", "Attack", "Defense", "HP", "Items", "Level", "XP"};
     public static boolean showXP;
 
+    public void filterByAlive(){
+        filtered.clear();
+        for (Player player : players) {
+            if(!player.dead){
+                filtered.add(player);
+            }
+        }
+        update();
+    }
+    
+    public void filterByType(int type){
+        filtered.clear();
+        for (Player player : players) {
+            if(type == 0 && player instanceof Knight){
+                filtered.add(player);
+            } else if(type == 1 && player instanceof Orc){
+                filtered.add(player);
+            } else if(type == 2 && player instanceof Mage){
+                filtered.add(player);
+            }
+        }
+        update();
+    }
+    
+    public void reset(){
+        filtered.clear();
+        for (Player player : players) {
+            filtered.add(player);
+        }
+        update();
+    }
+    
     public void sortByHP() {
-        Collections.sort(players, new SortByHP());
+        Collections.sort(filtered, new SortByHP());
         update();
     }
 
     public void sortByLevel() {
-        Collections.sort(players, new SortByLevel());
+        Collections.sort(filtered, new SortByLevel());
         update();
     }
 
     public void sortBYStrength() {
-        Collections.sort(players, new SortByStrengh());
+        Collections.sort(filtered, new SortByStrengh());
         update();
     }
 
@@ -38,10 +71,12 @@ public class IMKKBL extends AbstractTableModel {
     }
 
     public void add(Player p) {
+        filtered.add(p);
         players.add(p);
     }
 
     public void remove(int idx) {
+        filtered.remove(idx);
         players.remove(idx);
     }
 
@@ -51,6 +86,7 @@ public class IMKKBL extends AbstractTableModel {
             Object o;
             while ((o = ois.readObject()) != null) {
                 players.add((Player) o);
+                filtered.add((Player) o);
             }
         } catch (EOFException eofExc) {
         }
@@ -68,7 +104,7 @@ public class IMKKBL extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return players.size();
+        return filtered.size();
     }
 
     @Override
@@ -81,7 +117,7 @@ public class IMKKBL extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return players.get(rowIndex);
+        return filtered.get(rowIndex);
     }
 
     @Override

@@ -45,6 +45,12 @@ public class IMKKGUI extends javax.swing.JFrame {
         sortByHp = new javax.swing.JMenuItem();
         sortByXp = new javax.swing.JMenuItem();
         sortByStrengh = new javax.swing.JMenuItem();
+        filterMenu = new javax.swing.JMenu();
+        filterAlive = new javax.swing.JMenuItem();
+        filterKnight = new javax.swing.JMenuItem();
+        filterOrc = new javax.swing.JMenuItem();
+        filterMage = new javax.swing.JMenuItem();
+        resetFilter = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IMKK");
@@ -151,7 +157,7 @@ public class IMKKGUI extends javax.swing.JFrame {
 
         Menu.add(xpMenu);
 
-        sortMenu.setText("Sorting");
+        sortMenu.setText("Sort");
 
         sortByHp.setText("Sort By HP");
         sortByHp.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +185,50 @@ public class IMKKGUI extends javax.swing.JFrame {
         sortMenu.add(sortByStrengh);
 
         Menu.add(sortMenu);
+
+        filterMenu.setText("Filter");
+
+        filterAlive.setText("Show Alive");
+        filterAlive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterAliveActionPerformed(evt);
+            }
+        });
+        filterMenu.add(filterAlive);
+
+        filterKnight.setText("Show Knights");
+        filterKnight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterKnightActionPerformed(evt);
+            }
+        });
+        filterMenu.add(filterKnight);
+
+        filterOrc.setText("Show Orcs");
+        filterOrc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterOrcActionPerformed(evt);
+            }
+        });
+        filterMenu.add(filterOrc);
+
+        filterMage.setText("Show Mages");
+        filterMage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterMageActionPerformed(evt);
+            }
+        });
+        filterMenu.add(filterMage);
+
+        resetFilter.setText("Reset Filter");
+        resetFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetFilterActionPerformed(evt);
+            }
+        });
+        filterMenu.add(resetFilter);
+
+        Menu.add(filterMenu);
 
         setJMenuBar(Menu);
 
@@ -306,6 +356,26 @@ public class IMKKGUI extends javax.swing.JFrame {
         bl.sortBYStrength();
     }//GEN-LAST:event_sortByStrenghActionPerformed
 
+    private void filterOrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterOrcActionPerformed
+        bl.filterByType(1);
+    }//GEN-LAST:event_filterOrcActionPerformed
+
+    private void filterAliveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterAliveActionPerformed
+        bl.filterByAlive();
+    }//GEN-LAST:event_filterAliveActionPerformed
+
+    private void filterKnightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterKnightActionPerformed
+        bl.filterByType(0);
+    }//GEN-LAST:event_filterKnightActionPerformed
+
+    private void filterMageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterMageActionPerformed
+        bl.filterByType(2);
+    }//GEN-LAST:event_filterMageActionPerformed
+
+    private void resetFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetFilterActionPerformed
+        bl.reset();
+    }//GEN-LAST:event_resetFilterActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -347,11 +417,17 @@ public class IMKKGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem deleteItem;
     private javax.swing.JMenuItem deletePlayer;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenuItem filterAlive;
+    private javax.swing.JMenuItem filterKnight;
+    private javax.swing.JMenuItem filterMage;
+    private javax.swing.JMenu filterMenu;
+    private javax.swing.JMenuItem filterOrc;
     private javax.swing.JMenu itemMenu;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem loadFile;
     private javax.swing.JMenu playerMenu;
     private javax.swing.JTable playerTable;
+    private javax.swing.JMenuItem resetFilter;
     private javax.swing.JMenuItem saveFile;
     private javax.swing.JMenuItem showXP;
     private javax.swing.JMenuItem sortByHp;
