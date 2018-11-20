@@ -41,6 +41,10 @@ public class IMKKGUI extends javax.swing.JFrame {
         deleteItem = new javax.swing.JMenuItem();
         xpMenu = new javax.swing.JMenu();
         showXP = new javax.swing.JMenuItem();
+        sortMenu = new javax.swing.JMenu();
+        sortByHp = new javax.swing.JMenuItem();
+        sortByXp = new javax.swing.JMenuItem();
+        sortByStrengh = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IMKK");
@@ -146,6 +150,35 @@ public class IMKKGUI extends javax.swing.JFrame {
         xpMenu.add(showXP);
 
         Menu.add(xpMenu);
+
+        sortMenu.setText("Sorting");
+
+        sortByHp.setText("Sort By HP");
+        sortByHp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortByHpActionPerformed(evt);
+            }
+        });
+        sortMenu.add(sortByHp);
+
+        sortByXp.setText("Sort By Level");
+        sortByXp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortByXpActionPerformed(evt);
+            }
+        });
+        sortMenu.add(sortByXp);
+
+        sortByStrengh.setText("Sort By Strength");
+        sortByStrengh.setToolTipText("");
+        sortByStrengh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortByStrenghActionPerformed(evt);
+            }
+        });
+        sortMenu.add(sortByStrengh);
+
+        Menu.add(sortMenu);
 
         setJMenuBar(Menu);
 
@@ -261,6 +294,18 @@ public class IMKKGUI extends javax.swing.JFrame {
         bl.triggerXPcol();
     }//GEN-LAST:event_showXPActionPerformed
 
+    private void sortByHpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByHpActionPerformed
+        bl.sortByHP();
+    }//GEN-LAST:event_sortByHpActionPerformed
+
+    private void sortByXpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByXpActionPerformed
+        bl.sortByLevel();
+    }//GEN-LAST:event_sortByXpActionPerformed
+
+    private void sortByStrenghActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByStrenghActionPerformed
+        bl.sortBYStrength();
+    }//GEN-LAST:event_sortByStrenghActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -309,6 +354,10 @@ public class IMKKGUI extends javax.swing.JFrame {
     private javax.swing.JTable playerTable;
     private javax.swing.JMenuItem saveFile;
     private javax.swing.JMenuItem showXP;
+    private javax.swing.JMenuItem sortByHp;
+    private javax.swing.JMenuItem sortByStrengh;
+    private javax.swing.JMenuItem sortByXp;
+    private javax.swing.JMenu sortMenu;
     private javax.swing.JMenu xpMenu;
     // End of variables declaration//GEN-END:variables
 

@@ -1,6 +1,5 @@
 package BL;
 
-
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,40 +7,57 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.table.AbstractTableModel;
 
-public class IMKKBL extends AbstractTableModel{
+public class IMKKBL extends AbstractTableModel {
 
     private ArrayList<Player> players = new ArrayList<>();
     private String[] colNames = {"Species", "Name", "Attack", "Defense", "HP", "Items", "Level"};
     private String[] xpcolNames = {"Species", "Name", "Attack", "Defense", "HP", "Items", "Level", "XP"};
     public static boolean showXP;
-    
-    public void triggerXPcol(){
+
+    public void sortByHP() {
+        Collections.sort(players, new SortByHP());
+        update();
+    }
+
+    public void sortByLevel() {
+        Collections.sort(players, new SortByLevel());
+        update();
+    }
+
+    public void sortBYStrength() {
+        Collections.sort(players, new SortByStrengh());
+        update();
+    }
+
+    public void triggerXPcol() {
         showXP = !showXP;
         fireTableStructureChanged();
     }
-    
-    public void add(Player p){
+
+    public void add(Player p) {
         players.add(p);
     }
-    
-    public void remove(int idx){
+
+    public void remove(int idx) {
         players.remove(idx);
     }
-    
-    public void load(File f) throws Exception{
+
+    public void load(File f) throws Exception {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-        try{
+        try {
             Object o;
-            while((o = ois.readObject()) != null){
+            while ((o = ois.readObject()) != null) {
                 players.add((Player) o);
             }
-        } catch(EOFException eofExc){}
+        } catch (EOFException eofExc) {
+        }
         ois.close();
     }
-    
-    public void save(File f) throws Exception{
+
+    public void save(File f) throws Exception {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
         for (Player pl : players) {
             oos.writeObject(pl);
@@ -57,7 +73,7 @@ public class IMKKBL extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        if(showXP){
+        if (showXP) {
             return xpcolNames.length;
         }
         return colNames.length;
@@ -70,16 +86,14 @@ public class IMKKBL extends AbstractTableModel{
 
     @Override
     public String getColumnName(int column) {
-        if(showXP){
+        if (showXP) {
             return xpcolNames[column];
         }
         return colNames[column];
     }
-    
-    public void update(){
+
+    public void update() {
         fireTableDataChanged();
     }
-    
-    
 
 }
