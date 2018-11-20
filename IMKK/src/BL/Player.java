@@ -12,12 +12,16 @@ public abstract class Player implements Serializable {
     protected String name;
     protected ArrayList<Item> items = new ArrayList<>();
     protected boolean dead;
+    protected int xp;
+    protected int level;
 
     public Player(int attack, int defense, int hp, String name) {
         this.attack = attack;
         this.defense = defense;
         this.hp = hp;
         this.name = name;
+        this.xp = 0;
+        this.level = 1;
     }
 
     public Player fight(Player enemy) throws Exception {
@@ -27,18 +31,26 @@ public abstract class Player implements Serializable {
         int en = enemy.getAttack() - defense;
         int me = attack - enemy.getDefense();
         if (me > en) {
+            this.addXP(25);
+            enemy.addXP(15);
             enemy.die();
             return this;
         } else if (me < en) {
+            this.addXP(15);
+            enemy.addXP(25);
             this.die();
             return enemy;
         } else {
             Random rdm = new Random();
             int r = rdm.nextInt(2);
             if (r == 1) {
+                this.addXP(25);
+                enemy.addXP(15);
                 enemy.die();
                 return this;
             } else {
+                this.addXP(15);
+                enemy.addXP(25);
                 this.die();
                 return enemy;
             }
@@ -74,6 +86,24 @@ public abstract class Player implements Serializable {
             defense -= i.getAdvantageDefense();
         }
         items.remove(i);
+    }
+
+    public void addXP(int experience) {
+        xp += experience;
+        if (xp >= 50) {
+            level++;
+            attack += 10;
+            defense += 10;
+            xp -= 50;
+        }
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getXp() {
+        return xp;
     }
 
     public void setAttack(int attack) {

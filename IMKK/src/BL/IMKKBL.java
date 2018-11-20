@@ -13,7 +13,14 @@ import javax.swing.table.AbstractTableModel;
 public class IMKKBL extends AbstractTableModel{
 
     private ArrayList<Player> players = new ArrayList<>();
-    private String[] colNames = {"Species", "Name", "Attack", "Defense", "HP", "Items"};
+    private String[] colNames = {"Species", "Name", "Attack", "Defense", "HP", "Items", "Level"};
+    private String[] xpcolNames = {"Species", "Name", "Attack", "Defense", "HP", "Items", "Level", "XP"};
+    private boolean showXP;
+    
+    public void triggerXPcol(){
+        showXP = !showXP;
+        fireTableStructureChanged();
+    }
     
     public void add(Player p){
         players.add(p);
@@ -50,6 +57,9 @@ public class IMKKBL extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
+        if(showXP){
+            return xpcolNames.length;
+        }
         return colNames.length;
     }
 
@@ -60,6 +70,9 @@ public class IMKKBL extends AbstractTableModel{
 
     @Override
     public String getColumnName(int column) {
+        if(showXP){
+            return xpcolNames[column];
+        }
         return colNames[column];
     }
     
